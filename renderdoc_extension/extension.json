@@ -1,0 +1,9 @@
+{
+    "extension_api": 1,
+    "name": "RenderDoc Tool Set",
+    "version": "1.0.0",
+    "minimum_renderdoc": "1.20",
+    "description": "Renderdoc tool set for AI",
+    "author": "RenderDoc Tools",
+    "url": "https://github.com/DreamFields/renderdoc-tool-set"
+}
