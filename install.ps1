@@ -75,6 +75,9 @@ if (-not $SkipMcpToolInstall) {
     }
 }
 
+$uvBin = (& uv tool dir --bin).Trim()
+$shimPath = Join-Path $uvBin "renderdoc_toolset.exe"
+
 Write-Host ""
 Write-Host "Installation finished." -ForegroundColor Green
 Write-Host "You can now run: renderdoc_toolset" -ForegroundColor Green
@@ -82,7 +85,13 @@ Write-Host ""
 Write-Host "Next steps:" -ForegroundColor Yellow
 Write-Host "1) Restart RenderDoc"
 Write-Host "2) Enable extension: Tools > Manage Extensions > RenderDoc renderdoc_toolset_bridge"
-Write-Host "3) Configure MCP client command to: renderdoc_toolset"
+Write-Host "3) Configure MCP client command:" -ForegroundColor Yellow
+Write-Host "   - If 'renderdoc_toolset' works in your terminal, you can use it directly."
+Write-Host "   - If your MCP client reports 'command not found', use the full path below:" -ForegroundColor Yellow
+Write-Host "     $shimPath" -ForegroundColor Green
+Write-Host ""
+Write-Host "Example MCP config (full path):" -ForegroundColor Yellow
+Write-Host ('  {{"mcpServers":{{"renderdoc":{{"command":"{0}"}}}}}}' -f $shimPath)
 
 if (-not $KeepTemp) {
     Write-Step "Cleaning temporary files"

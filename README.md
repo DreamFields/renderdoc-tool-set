@@ -67,6 +67,11 @@ powershell -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.c
 }
 ```
 
+> **Windows 用户注意**：如果 MCP 客户端提示 `'renderdoc_toolset' 不是内部或外部命令`，说明客户端进程没有加载到 uv 的 PATH。请使用 `renderdoc_toolset.exe` 的完整路径代替命令名。安装脚本会在安装结束时打印该路径，您也可以通过以下命令查询：
+> ```powershell
+> Join-Path (uv tool dir --bin) "renderdoc_toolset.exe"
+> ```
+
 ### 作为 CLI 工具使用 (`renderdoc-cli`)
 安装后，您可以在终端中直接使用 `renderdoc-cli` 命令。
 
